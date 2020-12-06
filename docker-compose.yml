@@ -16,6 +16,8 @@ services:
 
   worker:
     build: .
+    ports:
+      - 8081:8080
     command: /spark.sh 1
 
   notebook:

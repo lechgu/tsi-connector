@@ -1,10 +1,9 @@
-
+package com.microsoft.tsi
 import org.apache.spark.api.java.JavaSparkContext
 import org.apache.spark.sql._
 import org.apache.spark.sql.types._
 import scala.collection.mutable.ListBuffer
 
-package com.microsoft.tsi
 class Connector {
   def getDataFrame(spark: SparkSession): DataFrame = {
     import spark.implicits._
