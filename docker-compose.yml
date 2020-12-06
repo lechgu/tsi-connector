@@ -19,7 +19,12 @@ services:
     ports:
       - 8081:8080
     command: /spark.sh 1
-
+  tester:
+    build: .
+    volumes:
+      - .:/app
+      - ./tsi:/tsi
+    working_dir: '/app'
   notebook:
     build: .
     ports:
