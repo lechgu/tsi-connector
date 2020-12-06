@@ -6,3 +6,9 @@ services:
     volumes:
     - ./tsi:/tsi
     working_dir: '/tsi'
+  master:
+    build: .
+    volumes:
+    - .:/app
+
+ 
