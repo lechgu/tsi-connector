@@ -1,4 +1,3 @@
-
 FROM openjdk:8-jdk-slim-buster
 RUN apt-get update && \
     apt-get upgrade -y && \
