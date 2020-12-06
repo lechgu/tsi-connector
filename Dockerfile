@@ -18,10 +18,12 @@ RUN wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-witho
 
 COPY core-site.xml hadoop-env.sh /hadoop/etc/hadoop/
 
-COPY requirements.txt spark.sh /
+COPY requirements.txt spark.sh jupyter.sh /
 
 RUN dos2unix /spark.sh && \
-    chmod +x /spark.sh
+    chmod +x /spark.sh && \
+    dos2unix /jupyter.sh && \
+    chmod +x /jupyter.sh
 
 RUN /venv/bin/pip install -r /requirements.txt
 
@@ -30,4 +32,4 @@ ENV SPARK_HOME="/spark"
 
 ENV SPARK_DIST_CLASSPATH="/hadoop/etc/hadoop:/hadoop/share/hadoop/common/lib/*:/hadoop/share/hadoop/common/*:/hadoop/share/hadoop/hdfs:/hadoop/share/hadoop/hdfs/lib/*:/hadoop/share/hadoop/hdfs/*:/hadoop/share/hadoop/yarn/lib/*:/hadoop/share/hadoop/yarn/*:/hadoop/share/hadoop/mapreduce/lib/*:/hadoop/share/hadoop/mapreduce/*:/hadoop/contrib/capacity-scheduler/*.jar:/hadoop/share/hadoop/tools/lib/hadoop-azure-2.7.7.jar:/hadoop/share/hadoop/tools/lib/azure-storage-2.0.0.jar"
 
-ENV PATH="${HADOOP_HOME}/bin:${SPARK_HOME}/bin:${PATH}:/venv/bin"
+ENV PATH="/venv/bin:${HADOOP_HOME}/bin:${SPARK_HOME}/bin:${PATH}"

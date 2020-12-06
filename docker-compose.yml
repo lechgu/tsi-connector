@@ -16,9 +16,17 @@ services:
 
   worker:
     build: .
-    ports:
-      - 8081:8080
     command: /spark.sh 1
+
+  notebook:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./notebooks:/notebooks
+      - ./tsi:/tsi
+    working_dir: '/notebooks'
+    command: /jupyter.sh
 
 
  
