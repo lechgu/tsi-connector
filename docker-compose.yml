@@ -6,9 +6,19 @@ services:
     volumes:
     - ./tsi:/tsi
     working_dir: '/tsi'
+  
   master:
     build: .
-    volumes:
-    - .:/app
+    ports:
+      - 7077:7077
+      - 8080:8080
+    command: /spark.sh 0
+
+  worker:
+    build: .
+    ports:
+      - 8081:8080
+    command: /spark.sh 1
+
 
  

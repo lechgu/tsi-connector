@@ -18,7 +18,10 @@ RUN wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-witho
 
 COPY core-site.xml hadoop-env.sh /hadoop/etc/hadoop/
 
-COPY requirements.txt /
+COPY requirements.txt spark.sh /
+
+RUN dos2unix /spark.sh && \
+    chmod +x /spark.sh
 
 RUN /venv/bin/pip install -r /requirements.txt
 
