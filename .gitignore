@@ -1,0 +1,5 @@
+.vscode
+.venv
+dist
+.ipynb_checkpoints
+target
